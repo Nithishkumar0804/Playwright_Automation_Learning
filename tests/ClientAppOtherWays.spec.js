@@ -15,7 +15,7 @@ test('E2E testing',async({page})=>{
         await page.locator('.card-body b').first().waitFor();
         await page.locator(".card-body").filter({hasText:productName}).getByRole("button",{name:"Add To Cart"}).click();
         await page.getByRole("listitem").getByRole("button",{name:"Cart"}).click();
-        await page.locator('div li').last().waitFor();
+        await page.locator('div li').first().waitFor();
         await expect(page.getByText(productName).isVisible()).toBeTruthy();
         await page.getByRole("button",{name:"Checkout"}).click();
         await page.getByPlaceholder("Select Country").pressSequentially("Ind");

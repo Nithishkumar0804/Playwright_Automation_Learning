@@ -18,11 +18,6 @@ test('Login credentails',async({page})=>{
     await userPassword.clear();
     await userPassword.fill('Learning@830$3mK2');
     await submitButton.click('');
-    console.log(await productTilte.first().textContent());
-    //console.log(await productTilte.nth(2).textContent());
-    console.log(await productTitle.allTextContents());
-    
-
 });
 
 test('static dropdown',async ({page})=>{
@@ -67,7 +62,7 @@ test('Windows Handling',async({browser})=>{
     //console.log(requiredEmail);
     const userName=page.locator('#username');
     await userName.fill(requiredEmail);
-    console.log(await userName.inputValue());
+    //console.log(await userName.inputValue());
     //await page.pause();
 
 });

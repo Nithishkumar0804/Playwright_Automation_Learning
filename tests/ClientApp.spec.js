@@ -14,11 +14,11 @@ test('E-commerce',async({browser})=>{
         //await page.waitForLoadState('networkidle');
         await page.locator('.card-body h5').first().waitFor();
         const producList=await productTilte.allTextContents();
-        console.log(producList);    
+        //console.log(producList);    
 }
 );
 
-test.only('E2E testing',async({page})=>{
+test('E2E testing',async({page})=>{
         const productName='ZARA COAT 3';
         await page.goto("https://rahulshettyacademy.com/client/#/auth/login");
         const userEmail=page.locator('[placeholder*="email@"]');

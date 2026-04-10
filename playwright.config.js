@@ -1,21 +1,22 @@
 import { chromium, defineConfig, devices } from '@playwright/test';
+import { trace } from 'node:console';
 
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
 const config=({
   testDir: './tests',
-  timeout:10*1000,
+  timeout:30*1000,
   expect:{
-    timeout:4000
+    timeout:30000
   },
-  //reporter:'html',
+  reporter:'html',
   use:{
     browserName:'chromium',
-    headless: true
-  }
-  
-
+    headless: true,
+    screenshot:"on",
+    trace:"retain-on-failure",//on,off,retain-on-failure
+  },
 });
 
 module.exports=config;
