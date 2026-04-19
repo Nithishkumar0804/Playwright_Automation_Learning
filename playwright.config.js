@@ -10,12 +10,12 @@ const config=({
   expect:{
     timeout:30000
   },
-  reporter:'html',
+  //reporter:'html',
   use:{
     browserName:'chromium',
     headless: true,
     screenshot:"on",
-    trace:"retain-on-failure",//on,off,retain-on-failure
+    //trace:"retain-on-failure",//on,off,retain-on-failure
   },
 });
 
