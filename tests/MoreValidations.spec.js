@@ -1,7 +1,8 @@
 const {test,expect}=require("@playwright/test");
 const path = require("node:path");
 
-test("Popup validation",async({page})=>{
+test.describe.configure({mode:'parallel'});   //parallel,serial,default
+test("@web Popup validation",async({page})=>{
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
     await expect(page.locator("#displayed-text")).toBeVisible();
     await page.locator("#hide-textbox").click();
@@ -21,7 +22,7 @@ test("ScreenShot",async({page})=>{
     await page.screenshot({path:"test-results/screenshots/WholeScreenShot.jpg"});
 });
 
-test.only("Visual testing",async({page})=>{
-    await page.goto("https://dashboard.fastpix.co/login");
-    expect(await page.screenshot()).toMatchSnapshot("ProdLandingPage");
-});
+//test.only("Visual testing",async({page})=>{
+  //  await page.goto("https://dashboard.fastpix.co/login");
+   // expect(await page.screenshot()).toMatchSnapshot("ProdLandingPage");
+//});

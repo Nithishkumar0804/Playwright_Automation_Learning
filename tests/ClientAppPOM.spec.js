@@ -1,10 +1,12 @@
 const {test, expect}= require ('@playwright/test');
 const { POManager } = require('../pageObjects/POManager');
+const testData=JSON.parse(JSON.stringify(require('../Utils/ClientAppPOMTestData.json')));
 
-test('E2E testing',async({page})=>{
-        const productName='iphone 13 pro';
-        const userEmail="rnithishkumar080421@gmail.com";
-        const userPassword="Rnithish21##";
+for(let data of testData){
+test(`Placing order for ${data.productName}`,async({page})=>{
+        const productName=data.productName;
+        const userEmail=data.userEmail;
+        const userPassword=data.userPassword;
         const poManager=new POManager(page);
 
         const loginPage = poManager.getLoginPage(page);
@@ -27,4 +29,5 @@ test('E2E testing',async({page})=>{
         const ordersPage=poManager.getOrdersPage(page);
         await expect(await ordersPage.checkOrderSummary(orderID)).toContain(orderID);
 });
+}
 
