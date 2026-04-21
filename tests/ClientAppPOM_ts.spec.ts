@@ -1,13 +1,13 @@
-const {test, expect}= require ('@playwright/test');
-const { POManager } = require('../pageObjects/POManager');
+import {test, expect,Page} from '@playwright/test';
+import { POManager } from '../pageObjects_ts/POManager';
 const testData=JSON.parse(JSON.stringify(require('../Utils/ClientAppPOMTestData.json')));
 
 for(let data of testData){
 test(`Placing order for ${data.productName}`,async({page})=>{
-        const productName=data.productName;
-        const userEmail=data.userEmail;
-        const userPassword=data.userPassword;
-        const poManager=new POManager(page);
+        const productName:string=data.productName;
+        const userEmail:string=data.userEmail;
+        const userPassword:string=data.userPassword;
+        const poManager:POManager=new POManager(page);
 
         const loginPage = poManager.getLoginPage();
         await loginPage.goTo();
@@ -24,7 +24,7 @@ test(`Placing order for ${data.productName}`,async({page})=>{
         await checkOutPage.placeOrder();
         const confirmationPage=poManager.getConfirmationPage();
         await expect(await confirmationPage.getConfirmationText()).toHaveText("Thankyou for the order.");
-        const orderID= await confirmationPage.getOrderId();
+        const orderID:any= await confirmationPage.getOrderId();
         await confirmationPage.navigateToMyOrders();
         const ordersPage=poManager.getOrdersPage();
         await expect(await ordersPage.checkOrderSummary(orderID)).toContain(orderID);
