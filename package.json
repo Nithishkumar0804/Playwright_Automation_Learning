@@ -12,6 +12,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@cucumber/cucumber": "^12.8.1",
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.2.3",
     "allure-playwright": "^3.7.1",

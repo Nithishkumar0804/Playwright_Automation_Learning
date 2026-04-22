@@ -11,9 +11,11 @@ export class ConfirmationPage{
         this.ordId=page.locator("label[class$='ng-star-inserted']");
         this.myorderLink=page.locator("button[routerlink$='/myorders']");
     }
-    getConfirmationText() {
-        return this.confimrationText;
+     async getConfirmationText() {
+        const text:any = await this.confimrationText.textContent();
+        return text.trim() || "";
     }
+    
     async getOrderId(){
         let ordID1:any=await this.ordId.textContent();
         let firstSplit=await ordID1.split("| ")[1];

@@ -23,7 +23,7 @@ test(`Placing order for ${data.productName}`,async({page})=>{
         await checkOutPage.fillCheckOutPage("Ind","12","20","Test Card",userEmail);
         await checkOutPage.placeOrder();
         const confirmationPage=poManager.getConfirmationPage();
-        await expect(await confirmationPage.getConfirmationText()).toHaveText("Thankyou for the order.");
+        await expect(await confirmationPage.getConfirmationText()).toContain("Thankyou for the order.");
         const orderID:any= await confirmationPage.getOrderId();
         await confirmationPage.navigateToMyOrders();
         const ordersPage=poManager.getOrdersPage();

@@ -7,7 +7,7 @@ class CartPage{
 
     async verifyProductInCart(productName){
         await this.lastOrder.waitFor();
-        await this.page.locator('h3', { hasText: productName });
+        return await this.page.locator('h3', { hasText: productName }).isVisible();
     }
     async goToCheckOut(){
         await this.checkOutButton.click();
